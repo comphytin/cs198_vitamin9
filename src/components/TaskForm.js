@@ -14,7 +14,7 @@ function TaskForm() {
 
     const handleAdd = () => {
         if (!task.trim()) return;
-        dispatch(addTodo(task));
+        dispatch(addTodo({id: Date.now(), text: task, completed: false}));
         setTask("");
     }
 

@@ -10,18 +10,23 @@ function TaskList() {
     const todos = useSelector(state => state.todos);
     const dispatch = useDispatch();
 
-    const handleDelete = () => {
-        dispatch(deleteTodo(todos.id));
-    }
-
-    return <div>
-       <ul>
-        {todos.map((t, i) => (
-            <li key={i} className="each_task">{t} 
-            <button className="delete_button" onClick={handleDelete}>Delete Task</button></li>
-        ))}
-       </ul>
-    </div>
+    return (
+        <div>
+            <ul>
+                {todos.map((todo) => (
+                    <li key={todo.id || Date.now() + Math.random()} className="each_task">
+                        {todo.text || todo}  {/* Shows todo.text if object, or todo if string */}
+                        <button 
+                            className="delete_button" 
+                            onClick={() => dispatch(deleteTodo(todo.id))}
+                        >
+                            Delete Task
+                        </button>
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
 }
 
 export default TaskList;
