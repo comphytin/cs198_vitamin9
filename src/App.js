@@ -1,24 +1,29 @@
 import logo from './logo.svg';
 import { useEffect } from 'react';
 import './App.css';
-import TaskForm from './components/TaskForm';
-import TaskList from './components/TaskList';
+import ProductList from "./components/ProductList";
+import Cart from "./components/Cart";
 
 function App() {
 
-  useEffect(() => {
-    document.title = "Your To-do List";
-  }, []);
   return (
-    <div className="App">
-      
-      <br></br>
-      <h1>Your To-do List</h1>
-      <br>
-      </br>
-      <h3>Just do what you gotta do!</h3>
-      <TaskForm />
-      <TaskList />
+    <div>
+      <nav className="navbar navbar-dark bg-dark">
+        <div className="container-fluid">
+          <span className="navbar-brand h1 mb-0">The Redux Store</span>
+        </div>
+      </nav>
+
+      <div className="container-fluid mt-4">
+        <div className="row">
+          <div className="col-md-8">
+            <ProductList />
+          </div>
+          <div className="col-md-4">
+            <Cart />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
